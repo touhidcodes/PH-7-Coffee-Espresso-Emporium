@@ -1,9 +1,24 @@
 import React from "react";
 
 const AddCoffee = () => {
+	const handleFormSubmit = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		const name = form.name.value;
+		const chef = form.chef.value;
+		const supplier = form.supplier.value;
+		const taste = form.taste.value;
+		const category = form.category.value;
+		const details = form.details.value;
+		const url = form.url.value;
+
+		const newCoffee = { name, chef, supplier, taste, category, details, url };
+		console.log(newCoffee);
+	};
 	return (
 		<div className='mx-auto w-2/4 mt-20'>
-			<form className='bg-slate-200 p-5 rounded-xl'>
+			<form className='bg-slate-200 p-5 rounded-xl' onSubmit={handleFormSubmit}>
+				<h2 className='text-3xl text-center '>Add Coffee</h2>
 				<div className='flex justify-between mt-10'>
 					<div className='form-control'>
 						<label className='input-group'>
@@ -76,22 +91,24 @@ const AddCoffee = () => {
 						</label>
 					</div>
 				</div>
-				<div className='flex justify-between mt-10'>
+				<div className=' mt-10'>
 					<div className='form-control'>
 						<label className='input-group'>
 							<span>Photo URL</span>
 							<input
 								type='text'
 								placeholder='photo url'
-								className='input input-bordered'
+								className='input input-bordered w-full'
 								name='url'
 							/>
 						</label>
 					</div>
 				</div>
-				<button className='btn btn-active btn-ghost mx-auto w-full mt-10 mb-3'>
-					Add Coffee
-				</button>
+				<input
+					type='submit'
+					value='Add Coffee'
+					className='btn btn-active btn-ghost mx-auto w-full mt-10 mb-3'
+				/>
 			</form>
 		</div>
 	);
