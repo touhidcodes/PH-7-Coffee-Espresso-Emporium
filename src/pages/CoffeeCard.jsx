@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CoffeeCard = ({ coffee }) => {
@@ -25,7 +26,6 @@ const CoffeeCard = ({ coffee }) => {
 						if (data.deletedCount > 0) {
 							Swal.fire("Deleted!", "Your file has been deleted.", "success");
 						}
-
 					});
 			}
 		});
@@ -45,7 +45,9 @@ const CoffeeCard = ({ coffee }) => {
 					<div className='card-actions justify-end'>
 						<div className='btn-group btn-group-vertical space-y-2'>
 							<button className='btn btn-active'>View</button>
-							<button className='btn'>Edit</button>
+							<Link to={`/updateCoffee/${_id}`}>
+								<button className='btn w-full'>Edit</button>
+							</Link>
 							<button
 								className='btn bg-orange-400 border-none'
 								onClick={() => {
