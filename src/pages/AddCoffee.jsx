@@ -1,4 +1,5 @@
 import React from "react";
+import Swal from "sweetalert2";
 
 const AddCoffee = () => {
 	const handleFormSubmit = (event) => {
@@ -24,12 +25,19 @@ const AddCoffee = () => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
+				form.reset();
 				if (data.insertedId) {
-					alert("Coffee Added Successfully");
+					Swal.fire({
+						title: "Success!",
+						text: "Coffee Added Successfully",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
 				}
 			});
 	};
+
 	return (
 		<div className='mx-auto w-2/4 mt-20'>
 			<form className='bg-slate-200 p-5 rounded-xl' onSubmit={handleFormSubmit}>
